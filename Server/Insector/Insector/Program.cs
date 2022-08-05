@@ -1,21 +1,29 @@
+using Insector.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Main
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static IConfiguration _configuration;
+
+        private static void Main(string[] args)
         {
+            var configurationBuilder = new ConfigurationBuilder()
+                 .AddJsonFile("appsettings.json");
+
+            _configuration = configurationBuilder.Build();
+
             var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            ConfigureServices(builder.Services);
+            ConfigureDbContext(builder.Services);
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -23,14 +31,27 @@ namespace Main
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
             app.MapControllers();
-
             app.Run();
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+        }
+
+        private static void ConfigureDbContext(IServiceCollection services)
+        {
+            var connectionString = _configuration.GetConnectionString("Insector");
+            var serverVersion = new MySqlServerVersion(MySqlServerVersion.LatestSupportedServerVersion);
+
+            services.AddDbContext<InsectorDbContext>(
+                dbContextOptions => dbContextOptions
+                    .UseMySql(connectionString, serverVersion)
+                    .LogTo(Console.WriteLine, LogLevel.Information)
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors()
+            );
         }
     }
 }
-
-
