@@ -3,6 +3,7 @@ using System;
 using Insector.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Insector.Data.Migrations
 {
     [DbContext(typeof(InsectorDbContext))]
-    partial class InsectorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220808084754_AddingUserRoles2")]
+    partial class AddingUserRoles2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +41,7 @@ namespace Insector.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rights");
+                    b.ToTable("UserRights");
                 });
 
             modelBuilder.Entity("Insector.Data.Models.Role", b =>
@@ -63,7 +65,7 @@ namespace Insector.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Rights");
                 });
 
             modelBuilder.Entity("Insector.Data.Models.RoleRight", b =>
@@ -84,7 +86,7 @@ namespace Insector.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RolesRights");
+                    b.ToTable("RoleRight");
                 });
 
             modelBuilder.Entity("Insector.Data.Models.User", b =>

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Insector.Data\Insector.Data.csproj" />
+  </ItemGroup>
+
 </Project>

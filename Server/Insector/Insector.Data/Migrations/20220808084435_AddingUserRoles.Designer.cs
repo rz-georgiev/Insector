@@ -3,6 +3,7 @@ using System;
 using Insector.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Insector.Data.Migrations
 {
     [DbContext(typeof(InsectorDbContext))]
-    partial class InsectorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220808084435_AddingUserRoles")]
+    partial class AddingUserRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,28 +65,7 @@ namespace Insector.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Roles");
-                });
-
-            modelBuilder.Entity("Insector.Data.Models.RoleRight", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("RightId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RightId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("RolesRights");
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("Insector.Data.Models.User", b =>
@@ -114,13 +95,13 @@ namespace Insector.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Insector.Data.Models.UserRole", b =>
+            modelBuilder.Entity("Insector.Data.Models.UserRight", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int>("RightId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -128,11 +109,11 @@ namespace Insector.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("RightId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("UserRights");
                 });
 
             modelBuilder.Entity("RightRole", b =>
@@ -157,30 +138,11 @@ namespace Insector.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("Insector.Data.Models.RoleRight", b =>
+            modelBuilder.Entity("Insector.Data.Models.UserRight", b =>
                 {
                     b.HasOne("Insector.Data.Models.Right", "Right")
                         .WithMany()
                         .HasForeignKey("RightId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Insector.Data.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Right");
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("Insector.Data.Models.UserRole", b =>
-                {
-                    b.HasOne("Insector.Data.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -190,7 +152,7 @@ namespace Insector.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Role");
+                    b.Navigation("Right");
 
                     b.Navigation("User");
                 });
