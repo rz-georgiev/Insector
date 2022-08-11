@@ -1,6 +1,7 @@
 using Insector.Data;
 using Insector.Data.Interfaces;
 using Insector.Services;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -111,7 +112,8 @@ namespace Main
 
         private static void ConfigureServices()
         {
-            _services.AddTransient<IUserService, UserService>();
+            _services.AddSingleton<IPasswordHasher, PasswordHasher>();
+            _services.AddTransient<IAuthService, AuthService>();
         }
 
         private static void ConfigureDbContext()

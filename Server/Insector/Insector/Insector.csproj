@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Insector.Data\Insector.Data.csproj" />
     <ProjectReference Include="..\Insector.Services\Insector.Services.csproj" />
+    <ProjectReference Include="..\Insector.Shared\Insector.Shared.csproj" />
   </ItemGroup>
 
 </Project>

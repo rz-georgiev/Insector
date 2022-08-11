@@ -6,11 +6,15 @@
 
         public string Email { get; set; }
 
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
 
         public string Nickname { get; set; }
 
         public string AvatarUrl { get; set; }
+
+        public bool IsEmailConfirmed { get; set; }
+
+        public bool IsActive { get; set; }
 
         public virtual IEnumerable<Role> Roles { get; set; }
 

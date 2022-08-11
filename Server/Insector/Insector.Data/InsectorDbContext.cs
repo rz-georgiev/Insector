@@ -16,8 +16,5 @@ namespace Insector.Data
 
         public DbSet<Role> Roles { get; set; }
 
-        public DbSet<Right> Rights { get; set; }
-
-        public DbSet<RoleRight> RolesRights { get; set; }
     }
 }

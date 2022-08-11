@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Insector.Shared", "Insector.Shared\Insector.Shared.csproj", "{D9592CB1-A65D-4A8C-BDEB-2DBFE5FCB0BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{75483D1E-3508-4B54-9872-72D053CC5275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75483D1E-3508-4B54-9872-72D053CC5275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75483D1E-3508-4B54-9872-72D053CC5275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9592CB1-A65D-4A8C-BDEB-2DBFE5FCB0BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9592CB1-A65D-4A8C-BDEB-2DBFE5FCB0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9592CB1-A65D-4A8C-BDEB-2DBFE5FCB0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9592CB1-A65D-4A8C-BDEB-2DBFE5FCB0BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

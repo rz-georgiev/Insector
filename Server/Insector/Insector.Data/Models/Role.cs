@@ -8,6 +8,5 @@
 
         public string Description { get; set; }
 
-        public virtual IEnumerable<Right> Rights { get; set; } 
     }
 }

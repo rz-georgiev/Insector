@@ -1,4 +1,4 @@
-﻿namespace Insector.Models
+﻿namespace Insector.Shared.WebAppViewModels.Requests
 {
     public class UserLoginRequest
     {

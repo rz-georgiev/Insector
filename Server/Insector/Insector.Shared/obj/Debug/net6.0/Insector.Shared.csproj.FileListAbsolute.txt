@@ -1,0 +1,12 @@
+D:\Development\Insector\Server\Insector\Insector.Shared\bin\Debug\net6.0\Insector.Shared.deps.json
+D:\Development\Insector\Server\Insector\Insector.Shared\bin\Debug\net6.0\Insector.Shared.dll
+D:\Development\Insector\Server\Insector\Insector.Shared\bin\Debug\net6.0\Insector.Shared.pdb
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\Insector.Shared.csproj.AssemblyReference.cache
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\Insector.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\Insector.Shared.AssemblyInfoInputs.cache
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\Insector.Shared.AssemblyInfo.cs
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\Insector.Shared.csproj.CoreCompileInputs.cache
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\Insector.Shared.dll
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\refint\Insector.Shared.dll
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\Insector.Shared.pdb
+D:\Development\Insector\Server\Insector\Insector.Shared\obj\Debug\net6.0\ref\Insector.Shared.dll
