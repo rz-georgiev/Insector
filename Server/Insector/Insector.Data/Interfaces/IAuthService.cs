@@ -1,9 +1,5 @@
 ﻿using Insector.Shared.WebAppViewModels.Requests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Insector.Shared.WebAppViewModels.Responses;
 
 namespace Insector.Data.Interfaces
 {
@@ -12,5 +8,7 @@ namespace Insector.Data.Interfaces
         Task<string> LoginAsync(UserLoginRequest request);
 
         Task<bool> RegisterAsync(UserRegisterRequest request);
+
+        Task<IEnumerable<RoleResponse>> GetRolesAsync();
     }
 }

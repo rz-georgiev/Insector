@@ -31,8 +31,16 @@ namespace Insector.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] UserRegisterRequest request)
         {
-            var user = await _authService.RegisterAsync(request);
-            return user != null ? Ok(user) : NotFound(user);
+            var result = await _authService.RegisterAsync(request);
+            return result ? Ok("Registered") : NotFound("Not registered");
+        }
+
+        [HttpGet("Roles")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetRoles()
+        {
+            var roles = await _authService.GetRolesAsync();
+            return Ok(roles);
         }
     }
 }

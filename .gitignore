@@ -4,6 +4,8 @@
 /Server/Insector/Insector.Data/obj
 /Server/Insector/Insector.Services/bin
 /Server/Insector/Insector.Services/obj
+/Server/Insector/Insector.Shared/bin
+/Server/Insector/Insector.Shared/obj
 /Server/Insector/Insector.Tests/bin
 /Server/Insector/Insector.Tests/obj
 /Server/Insector/.vs

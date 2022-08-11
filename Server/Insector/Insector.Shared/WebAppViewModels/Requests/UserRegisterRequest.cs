@@ -10,10 +10,6 @@
 
         public string AvatarUrl { get; set; }
 
-        public bool IsEmailConfirmed { get; set; } = false;
-
-        public bool IsActive { get; set; } = true;
-
         public virtual IEnumerable<UserRegisterRoleRequest> RolesIds { get; set; }
     }
 }

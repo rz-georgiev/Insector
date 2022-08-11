@@ -2,6 +2,7 @@
 using Insector.Data.Interfaces;
 using Insector.Data.Models;
 using Insector.Shared.WebAppViewModels.Requests;
+using Insector.Shared.WebAppViewModels.Responses;
 using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +35,6 @@ namespace Insector.Services
                 .FirstOrDefaultAsync(x => x.Email == request.Email
                                      && x.IsActive
                                      && x.IsEmailConfirmed);
-
             if (user == null)
             {
                 return null;
@@ -62,7 +62,27 @@ namespace Insector.Services
             await _context.Users.AddAsync(newUser);
             await _context.SaveChangesAsync();
 
+            var userRoles = request.RolesIds.Select(x => new UserRole
+            {
+                UserId = newUser.Id,
+                RoleId = x.Id,
+            });
+
+            await _context.UserRoles.AddRangeAsync(userRoles);
+            await _context.SaveChangesAsync();
+
             return newUser.Id != 0;
+        }
+
+        public async Task<IEnumerable<RoleResponse>> GetRolesAsync()
+        {
+            var roles = await _context.Roles.ToListAsync();
+            return roles.Select(x => new RoleResponse
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Description = x.Description
+            });
         }
 
         private string GenerateToken(User user)
