@@ -1,9 +1,7 @@
 ﻿namespace Insector.Data.Models
 {
-    public class User
+    public class User : BaseModel
     {
-        public int Id { get; set; }
-
         public string Email { get; set; }
 
         public string PasswordHash { get; set; }
@@ -14,9 +12,9 @@
 
         public bool IsEmailConfirmed { get; set; }
 
-        public bool IsActive { get; set; }
-
         public virtual IEnumerable<Role> Roles { get; set; }
+
+        public virtual IEnumerable<Task> Tasks { get; set; }
 
     }
 }

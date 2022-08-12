@@ -12,7 +12,6 @@ namespace Insector.Data
             Database.Migrate();
         }
 
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -24,7 +23,6 @@ namespace Insector.Data
             builder.Entity<User>().HasData(users);
             builder.Entity<Role>().HasData(roles);
             builder.Entity<UserRole>().HasData(usersRoles);
-
         }
 
         private IEnumerable<T> GetDeserializedObjects<T>(string resourceValue) where T : class
@@ -33,14 +31,20 @@ namespace Insector.Data
             return objects;
         }
 
-
-
-
         public DbSet<User> Users { get; set; }
 
         public DbSet<UserRole> UserRoles { get; set; }
 
         public DbSet<Role> Roles { get; set; }
 
+        public DbSet<Team> Teams { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+
+        public DbSet<TaskType> TaskTypes { get; set; }
+
+        public DbSet<ProgressType> ProgressTypes { get; set; }
+
+        public DbSet<Models.Task> Tasks { get; set; }
     }
 }
