@@ -103,7 +103,7 @@ namespace Insector.Services
             var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
                 _configuration["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

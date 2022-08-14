@@ -31,6 +31,7 @@ namespace Main
             ConfigureJwt();
             ConfigureServices();
             ConfigureDbContext();
+            ConfigureAutoMapper();
 
             var app = builder.Build();
 
@@ -114,6 +115,7 @@ namespace Main
         {
             _services.AddSingleton<IPasswordHasher, PasswordHasher>();
             _services.AddTransient<IAuthService, AuthService>();
+            _services.AddTransient<IProgressTypeService, ProgressTypeService>();
         }
 
         private static void ConfigureDbContext()
@@ -128,6 +130,11 @@ namespace Main
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors()
             );
+        }
+
+        private static void ConfigureAutoMapper()
+        {
+            _services.AddAutoMapper(typeof(Program));
         }
     }
 }
