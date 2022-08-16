@@ -9,13 +9,11 @@ namespace Insector.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
         private readonly IAuthService _authService;
 
         public AuthController(IConfiguration configuration,
             IAuthService authService)
         {
-            _configuration = configuration;
             _authService = authService;
         }
 

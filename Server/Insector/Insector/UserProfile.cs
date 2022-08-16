@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Insector.Data.Models;
+using Insector.Shared.WebAppViewModels.Requests;
 using Insector.Shared.WebAppViewModels.Responses;
 
 namespace Insector
@@ -8,7 +9,9 @@ namespace Insector
     {
         public UserProfile()
         {
+            CreateMap<Role, RoleResponse>();
             CreateMap<ProgressType, ProgressTypeResponse>();
+            CreateMap<ProgressTypeRequest, ProgressType>();
         }
     }
 }

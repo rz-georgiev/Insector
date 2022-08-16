@@ -1,4 +1,6 @@
-﻿namespace Insector.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Insector.Data.Models
 {
     public class User : BaseModel
     {
@@ -14,7 +16,7 @@
 
         public virtual IEnumerable<Role> Roles { get; set; }
 
-        public virtual IEnumerable<Task> Tasks { get; set; }
+        //public virtual IEnumerable<Task> Tasks { get; set; }
 
     }
 }

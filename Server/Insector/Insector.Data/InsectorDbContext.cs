@@ -18,11 +18,11 @@ namespace Insector.Data
 
             var users = GetDeserializedObjects<User>(SeedingResources.Users);
             var roles = GetDeserializedObjects<Role>(SeedingResources.Roles);
-            var usersRoles = GetDeserializedObjects<UserRole>(SeedingResources.UsersRoles);
+            //var usersRoles = GetDeserializedObjects<UserRole>(SeedingResources.UsersRoles);
 
             builder.Entity<User>().HasData(users);
             builder.Entity<Role>().HasData(roles);
-            builder.Entity<UserRole>().HasData(usersRoles);
+            //builder.Entity<UserRole>().HasData(usersRoles);
         }
 
         private IEnumerable<T> GetDeserializedObjects<T>(string resourceValue) where T : class
@@ -31,11 +31,11 @@ namespace Insector.Data
             return objects;
         }
 
+        public DbSet<Role> Roles { get; set; }
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<UserRole> UserRoles { get; set; }
-
-        public DbSet<Role> Roles { get; set; }
 
         public DbSet<Team> Teams { get; set; }
 

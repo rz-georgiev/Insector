@@ -1,15 +1,22 @@
-﻿namespace Insector.Shared.WebAppViewModels.Requests
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Insector.Shared.WebAppViewModels.Requests
 {
-    public class UserRegisterRequest
+    public class UserRegisterRequest : BaseRequestModel
     {
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
+        [Required]
         public string Nickname { get; set; }
 
+        [Required]
         public string Password { get; set; }
 
         public string AvatarUrl { get; set; }
 
+        [Required]
         public virtual IEnumerable<UserRegisterRoleRequest> RolesIds { get; set; }
     }
 }
