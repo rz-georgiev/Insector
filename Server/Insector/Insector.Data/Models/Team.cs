@@ -8,9 +8,9 @@
 
         public string LogoUrl { get; set; }
 
-        public virtual IEnumerable<Project> Projects { get; set; }
+        public virtual ICollection<Project> Projects { get; set; }
 
-        public virtual IEnumerable<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
 
     }
 }

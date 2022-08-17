@@ -14,9 +14,9 @@ namespace Insector.Data.Models
 
         public bool IsEmailConfirmed { get; set; }
 
-        public virtual IEnumerable<Role> Roles { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
 
-        //public virtual IEnumerable<Task> Tasks { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
 
     }
 }

@@ -35,7 +35,7 @@ namespace Insector.Services
         public async Task<string> LoginAsync(UserLoginRequest request)
         {
             var user = await _context.Users
-                //.Include(x => x.Roles)
+                .Include(x => x.Roles)
                 .FirstOrDefaultAsync(x => x.Email == request.Email
                                      && x.IsActive
                                      && x.IsEmailConfirmed);
@@ -63,16 +63,12 @@ namespace Insector.Services
                 IsEmailConfirmed = false,
             };
 
+            var rolesIds = request.RolesIds.Select(x => x.Id);
+            var roles = _context.Roles.Where(x => rolesIds.Contains(x.Id));
+
+            newUser.Roles = roles.ToList();
+
             await _context.Users.AddAsync(newUser);
-            await _context.SaveChangesAsync();
-
-            //var userRoles = request.RolesIds.Select(x => new UserRole
-            //{
-            //    UserId = newUser.Id,
-            //    RoleId = x.Id,
-            //});
-
-            //await _context.UserRoles.AddRangeAsync(userRoles);
             await _context.SaveChangesAsync();
 
             return newUser.Id != 0;
@@ -97,10 +93,10 @@ namespace Insector.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Nickname)
             };
 
-            //foreach (var role in user.Roles)
-            //{
-            //    claims.Add(new Claim(ClaimTypes.Role, role.Title));
-            //}
+            foreach (var role in user.Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.Title));
+            }
 
             var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
                 _configuration["Jwt:Audience"],

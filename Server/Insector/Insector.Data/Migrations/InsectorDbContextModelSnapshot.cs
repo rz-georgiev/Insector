@@ -121,12 +121,7 @@ namespace Insector.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Roles");
 
@@ -135,7 +130,7 @@ namespace Insector.Data.Migrations
                         {
                             Id = 1,
                             CreatedByUserId = 0,
-                            CreatedOn = new DateTime(2022, 8, 16, 11, 18, 13, 237, DateTimeKind.Utc).AddTicks(9380),
+                            CreatedOn = new DateTime(2022, 8, 17, 7, 43, 3, 565, DateTimeKind.Utc).AddTicks(430),
                             Description = "Default",
                             IsActive = true,
                             Title = "Default"
@@ -144,7 +139,7 @@ namespace Insector.Data.Migrations
                         {
                             Id = 2,
                             CreatedByUserId = 0,
-                            CreatedOn = new DateTime(2022, 8, 16, 11, 18, 13, 237, DateTimeKind.Utc).AddTicks(9417),
+                            CreatedOn = new DateTime(2022, 8, 17, 7, 43, 3, 565, DateTimeKind.Utc).AddTicks(469),
                             Description = "Administrator",
                             IsActive = true,
                             Title = "Administrator"
@@ -337,7 +332,7 @@ namespace Insector.Data.Migrations
                             Id = 1,
                             AvatarUrl = "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png",
                             CreatedByUserId = 0,
-                            CreatedOn = new DateTime(2022, 8, 16, 11, 18, 13, 237, DateTimeKind.Utc).AddTicks(9078),
+                            CreatedOn = new DateTime(2022, 8, 17, 7, 43, 3, 565, DateTimeKind.Utc).AddTicks(180),
                             Email = "default_user@gmail.com",
                             IsActive = true,
                             IsEmailConfirmed = true,
@@ -346,25 +341,19 @@ namespace Insector.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Insector.Data.Models.UserRole", b =>
+            modelBuilder.Entity("RoleUser", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("RolesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int>("UsersId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.HasKey("RolesId", "UsersId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("UsersId");
 
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRoles");
+                    b.ToTable("RoleUser");
                 });
 
             modelBuilder.Entity("Insector.Data.Models.Project", b =>
@@ -378,17 +367,10 @@ namespace Insector.Data.Migrations
                     b.Navigation("AssignedToTeam");
                 });
 
-            modelBuilder.Entity("Insector.Data.Models.Role", b =>
-                {
-                    b.HasOne("Insector.Data.Models.User", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("Insector.Data.Models.Task", b =>
                 {
                     b.HasOne("Insector.Data.Models.User", "AssignedToUser")
-                        .WithMany()
+                        .WithMany("Tasks")
                         .HasForeignKey("AssignedToUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -423,23 +405,19 @@ namespace Insector.Data.Migrations
                         .HasForeignKey("TeamId");
                 });
 
-            modelBuilder.Entity("Insector.Data.Models.UserRole", b =>
+            modelBuilder.Entity("RoleUser", b =>
                 {
-                    b.HasOne("Insector.Data.Models.Role", "Role")
+                    b.HasOne("Insector.Data.Models.Role", null)
                         .WithMany()
-                        .HasForeignKey("RoleId")
+                        .HasForeignKey("RolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Insector.Data.Models.User", "User")
+                    b.HasOne("Insector.Data.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Role");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Insector.Data.Models.Project", b =>
@@ -456,7 +434,7 @@ namespace Insector.Data.Migrations
 
             modelBuilder.Entity("Insector.Data.Models.User", b =>
                 {
-                    b.Navigation("Roles");
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }
