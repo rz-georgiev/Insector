@@ -16,6 +16,9 @@ namespace Insector
             
             CreateMap<Project, ProjectResponse>();
             CreateMap<ProjectRequest, Project>();
+
+            CreateMap<Role, RoleResponse>();
+            CreateMap<RoleRequest, Role>();
         }
     }
 }
