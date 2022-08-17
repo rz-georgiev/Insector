@@ -17,6 +17,6 @@ namespace Insector.Shared.WebAppViewModels.Requests
         public string AvatarUrl { get; set; }
 
         [Required]
-        public virtual IEnumerable<int> RolesIds { get; set; }
+        public IEnumerable<int> RolesIds { get; set; }
     }
 }

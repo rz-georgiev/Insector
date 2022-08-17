@@ -118,6 +118,9 @@ namespace Main
             _services.AddTransient<IProgressTypeService, ProgressTypeService>();
             _services.AddTransient<IProjectService, ProjectService>();
             _services.AddTransient<IRoleService, RoleService>();
+            _services.AddTransient<ITaskService, TaskService>();
+            _services.AddTransient<ITaskTypeService, TaskTypeService>();
+            _services.AddTransient<ITeamService, TeamService>();
         }
 
         private static void ConfigureDbContext()
