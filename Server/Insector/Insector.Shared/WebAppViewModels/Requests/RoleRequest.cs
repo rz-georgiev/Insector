@@ -1,7 +1,7 @@
 ﻿using Insector.Shared.WebAppViewModels.Requests;
 using System.ComponentModel.DataAnnotations;
 
-namespace Insector.Shared.WebAppViewModels.Responses
+namespace Insector.Shared.WebAppViewModels.Requests
 {
     public class RoleRequest : BaseRequestModel
     {
