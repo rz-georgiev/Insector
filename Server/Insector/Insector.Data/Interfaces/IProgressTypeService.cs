@@ -6,7 +6,7 @@ namespace Insector.Data.Interfaces
 {
     public interface IProgressTypeService
     {
-        Task<ProgressTypeResponse> SaveAsync(ProgressTypeRequest request);
+        Task<bool> SaveAsync(ProgressTypeRequest request);
 
         Task<bool> DeleteAsync(int id);
 

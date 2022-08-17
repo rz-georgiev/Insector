@@ -11,8 +11,7 @@ namespace Insector.Controllers
     {
         private readonly IAuthService _authService;
 
-        public AuthController(IConfiguration configuration,
-            IAuthService authService)
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
@@ -22,7 +21,7 @@ namespace Insector.Controllers
         public async Task<IActionResult> Login([FromBody] UserLoginRequest login)
         {
             var token = await _authService.LoginAsync(login);
-            return token != null ? Ok(token) : NotFound("User not found");
+            return token != null ? Ok(token) : BadRequest("Unsuccessful login");
         }
 
         [HttpPost("Register")]
@@ -30,7 +29,7 @@ namespace Insector.Controllers
         public async Task<IActionResult> Register([FromBody] UserRegisterRequest request)
         {
             var result = await _authService.RegisterAsync(request);
-            return result ? Ok("Registered") : NotFound("Not registered");
+            return result ? Ok("Registered") : BadRequest("Unsuccessful registration");
         }
 
         [HttpGet("Roles")]

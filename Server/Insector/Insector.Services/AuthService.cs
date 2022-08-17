@@ -63,7 +63,7 @@ namespace Insector.Services
                 IsEmailConfirmed = false,
             };
 
-            var rolesIds = request.RolesIds.Select(x => x.Id);
+            var rolesIds = request.RolesIds;
             var roles = _context.Roles.Where(x => rolesIds.Contains(x.Id));
 
             newUser.Roles = roles.ToList();

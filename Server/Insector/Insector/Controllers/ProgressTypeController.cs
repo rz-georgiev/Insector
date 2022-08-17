@@ -16,37 +16,33 @@ namespace Insector.Controllers
     public class ProgressTypeController : ControllerBase
     {
         private readonly IProgressTypeService _progressTypeService;
-        private readonly IMapper _mapper;
 
-        public ProgressTypeController(IProgressTypeService progressTypeService,
-            IMapper mapper)
+        public ProgressTypeController(IProgressTypeService progressTypeService)
         {
             _progressTypeService = progressTypeService;
-            _mapper = mapper;
         }
         
         [HttpPost("Save")]
         public async Task<IActionResult> SaveAsync(ProgressTypeRequest request)
         {
             request.PerformedByUserId = HttpContext.GetUserId();
-            var result = await _progressTypeService.SaveAsync(request);       
-          
-            return Ok(result);
+            var result = await _progressTypeService.SaveAsync(request);
+
+            return result ? Ok("Successful operation") : BadRequest("Unsuccessful operation");
         }
 
         [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var result = await _progressTypeService.DeleteAsync(id);
-            return Ok(result);
+            return result ? Ok("Successful operation") : BadRequest("Unsuccessful operation");
         }
 
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var types = await _progressTypeService.GetAllAsync();
-            var models = _mapper.Map<IEnumerable<ProgressTypeResponse>>(types);
-            return Ok(models);
+            return Ok(types);
         }
     }
 }

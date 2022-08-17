@@ -10,8 +10,12 @@ namespace Insector
         public UserProfile()
         {
             CreateMap<Role, RoleResponse>();
+            
             CreateMap<ProgressType, ProgressTypeResponse>();
             CreateMap<ProgressTypeRequest, ProgressType>();
+            
+            CreateMap<Project, ProjectResponse>();
+            CreateMap<ProjectRequest, Project>();
         }
     }
 }

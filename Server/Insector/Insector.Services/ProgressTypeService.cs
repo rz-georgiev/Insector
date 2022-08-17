@@ -20,29 +20,32 @@ namespace Insector.Services
             _mapper = mapper;
         }
 
-        public async Task<ProgressTypeResponse> SaveAsync(ProgressTypeRequest request)
+        public async Task<bool> SaveAsync(ProgressTypeRequest request)
         {
-            var type = _mapper.Map<ProgressType>(request);
-            if (type.Id == 0)
+            var type = await _context.ProgressTypes.FirstOrDefaultAsync(x => x.Id == request.Id);
+            if (type == null)
             {
-                _context.Add(type);
+                type = _mapper.Map<ProgressType>(request);
                 type.CreatedByUserId = request.PerformedByUserId;
+
+                _context.Add(type);            
             }
             else
             {
-
-                _context.Update(type);
+                type = _mapper.Map<ProgressType>(request);
                 type.LastUpdatedByUserId = request.PerformedByUserId;
                 type.LastUpdatedOn = DateTime.UtcNow;
+
+                _context.Update(type);  
             }
             try
             {
                 await _context.SaveChangesAsync();
-                return _mapper.Map<ProgressTypeResponse>(type);
+                return true;
             }
             catch (Exception)
             {
-                return null;
+                return false;
             }
         }
 
@@ -64,7 +67,6 @@ namespace Insector.Services
             {
                 return false;
             }
-            return false;
         }
 
         public async Task<IEnumerable<ProgressTypeResponse>> GetAllAsync()
@@ -72,7 +74,6 @@ namespace Insector.Services
             var types = await _context.ProgressTypes.ToListAsync();
             var models = _mapper.Map<IEnumerable<ProgressTypeResponse>>(types);
             return models;
-            return null;
         }
     }
 }

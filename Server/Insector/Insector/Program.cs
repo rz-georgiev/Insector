@@ -116,6 +116,7 @@ namespace Main
             _services.AddSingleton<IPasswordHasher, PasswordHasher>();
             _services.AddTransient<IAuthService, AuthService>();
             _services.AddTransient<IProgressTypeService, ProgressTypeService>();
+            _services.AddTransient<IProjectService, ProjectService>();
         }
 
         private static void ConfigureDbContext()
