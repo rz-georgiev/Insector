@@ -3,9 +3,35 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Insector": {
+    "app-name": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,17 +39,22 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/insector",
+            "outputPath": "dist/app-name",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/devextreme/dist/css/dx.common.css",
+              "src/themes/generated/theme.base.css",
+              "src/themes/generated/theme.additional.css",
+              "src/dx-styles.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -32,8 +63,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "7mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -64,10 +95,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Insector:build:production"
+              "browserTarget": "app-name:build:production"
             },
             "development": {
-              "browserTarget": "Insector:build:development"
+              "browserTarget": "app-name:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Insector:build"
+            "browserTarget": "app-name:build"
           }
         },
         "test": {
@@ -85,12 +116,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -99,6 +131,6 @@
     }
   },
   "cli": {
-    "analytics": "1e62e79c-b882-4739-98e7-81482a781ca1"
+    "analytics": "371851aa-ff50-4a75-bd2a-76eef6d23f97"
   }
 }
