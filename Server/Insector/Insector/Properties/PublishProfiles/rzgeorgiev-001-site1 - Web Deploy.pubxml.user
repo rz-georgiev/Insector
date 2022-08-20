@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAuC5yO65g90mT2LrVmvjyDwAAAAACAAAAAAAQZgAAAAEAACAAAAD0yVbN0oBUnAAQ1gN3VgYTrGzbGY8riEskl8GUSlA1kAAAAAAOgAAAAAIAACAAAACrIkspMwrCP2RewLkHp/8SmE+bhSyoEOTVZNjDxfw/diAAAABTizdzKfRGGAs06IBMy2V7k00uV2YigKTutunvAVI3BUAAAADgps44GW4ZFymGFYnJUWT39LpQqbv0Fs1tNQPLSynJibcMa7AO+2TRLcF44SzADSQwUmXWFjrB0ZWAQmJrh3pQ</EncryptedPassword>
+    <History>True|2022-08-20T11:09:45.9240274Z;True|2022-08-19T20:31:55.7048409+03:00;False|2022-08-19T20:28:47.4882902+03:00;True|2022-08-19T20:24:04.1996822+03:00;True|2022-08-19T20:21:53.8858020+03:00;False|2022-08-19T18:07:54.5881550+03:00;False|2022-08-19T18:05:59.3028400+03:00;True|2022-08-19T17:37:36.1928133+03:00;True|2022-08-19T17:34:46.0804261+03:00;False|2022-08-19T17:34:09.1444154+03:00;False|2022-08-19T17:33:44.0124648+03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="Insector">
+      <Value>Server=MYSQL5044.site4now.net%3bDatabase=db_a558e2_insecto%3bUid=a558e2_insecto%3bPwd=insecto1</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
