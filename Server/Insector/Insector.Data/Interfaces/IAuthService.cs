@@ -5,7 +5,7 @@ namespace Insector.Data.Interfaces
 {
     public interface IAuthService
     {
-        Task<string> LoginAsync(UserLoginRequest request);
+        Task<LoginResponse> LoginAsync(UserLoginRequest request);
 
         Task<bool> RegisterAsync(UserRegisterRequest request);
 

@@ -32,7 +32,7 @@ namespace Insector.Services
             _context = dbContext;
         }
 
-        public async Task<string> LoginAsync(UserLoginRequest request)
+        public async Task<LoginResponse> LoginAsync(UserLoginRequest request)
         {
             var user = await _context.Users
                 .Include(x => x.Roles)
@@ -48,7 +48,7 @@ namespace Insector.Services
             var isPasswordValid = result == PasswordVerificationResult.Success
                 || result == PasswordVerificationResult.SuccessRehashNeeded;
 
-            return isPasswordValid ? GenerateToken(user) : null;
+            return isPasswordValid ? new LoginResponse { JwtToken = GenerateToken(user) } : null;
         }
 
         public async Task<bool> RegisterAsync(UserRegisterRequest request)
