@@ -16,6 +16,7 @@ namespace Main
     {
         private static IConfiguration _configuration;
         private static IServiceCollection _services;
+        private static string _corsOrigins = "_corsOrigins";
 
         private static void Main(string[] args)
         {
@@ -41,6 +42,7 @@ namespace Main
             app.UseHttpsRedirection();
             app.MapControllers();
             app.UseAuthentication();
+            app.UseCors(_corsOrigins);
             app.UseAuthorization();
             app.Run();
         }
@@ -118,6 +120,17 @@ namespace Main
             _services.AddTransient<ITaskService, TaskService>();
             _services.AddTransient<ITaskTypeService, TaskTypeService>();
             _services.AddTransient<ITeamService, TeamService>();
+
+            _services.AddCors(options =>
+            {
+                options.AddPolicy(name: _corsOrigins,
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
         }
 
         private static void ConfigureDbContext()
